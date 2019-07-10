@@ -1,14 +1,15 @@
 {
-  "name": "ConfigAppData",
-  "description": "Generate dictionary for particular  aation from Config dictionary",
-  "main": "ConfigAppData.xaml",
+  "name": "Browser_tools",
+  "description": "Reusable components to manage browser's windows ",
+  "main": "NewActivity.xaml",
   "dependencies": {
+    "ConfigAppData": "1.0.8",
     "UiPath.System.Activities": "19.6.0",
     "UiPath.UIAutomation.Activities": "19.6.0"
   },
   "schemaVersion": "3.2",
   "studioVersion": "19.6.0.0",
-  "projectVersion": "1.0.8",
+  "projectVersion": "1.0.2",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,

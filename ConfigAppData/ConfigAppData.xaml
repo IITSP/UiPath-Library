@@ -1,18 +1,18 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Sequence" this:Sequence.Delimiter="." xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="AppName" Type="InArgument(x:String)">
+    <x:Property sap2010:Annotation.AnnotationText="Application name to parsing for in Config's Keys &#xD;&#xA;template of such key is &#xD;&#xA;&quot;AppName.AppKey&quot;" Name="AppName" Type="InArgument(x:String)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property Name="Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="AppConfig" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="Delimiter" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Standard Framework Config  &lt; Dictionary(of System.String,System.Object) &gt;" Name="Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Application config, might be passed existing dictionary  for continue to fill it up. otherwise it willl created  " Name="AppConfig" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="any unique string used for all keys belong to this application to separate AppName and KeyName in Config file &#xD;&#xA;Default is &quot;.&quot;&#xD;&#xA;" Name="Delimiter" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>596,1564</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>596,1515</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -37,6 +37,7 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -63,14 +64,17 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Procedure forms AppConfig from values provided in config for name AppName.&#xA;&#xA;&#xA;Keys style is AppName+Delimiter+Key  (example of key &quot;ACME.URL&quot; )&#xA;&#xA;Config (AppName+Delimiter+KEY)  are copying to Dictionary    AppConfig(KEY)&#xA;&#xA;Whole AppConfig adding to config :  Config(&quot;APP_&quot;+AppName)=AppConfig&#xA;&#xA;AppName - have to be supplied might be empty string&#xA;AppConfig might be supplied as in argument or it could exist ib Config&#xA;&#xA;priority for AppConfig sources  &#xA;&#xA;                   in argument as AppConfig ;&#xA;if not/empty   then  -&gt;  in Config(&quot;APP_&quot;+AppName);&#xA;if not/empty   then  -&gt; New Dictionary (string,Object)&#xA;&#xA;&#xA;Keys Started with AppName + Delimiter treated as keys for AppConfig but without common Prefix 'AppName+Delimiter'&#xA;&#xA;" DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="556,1444" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap2010:Annotation.AnnotationText="Procedure forms AppConfig from values provided in config for name AppName.&#xA;&#xA;&#xA;Keys style is AppName+Delimiter+Key  (example of key &quot;ACME.URL&quot; )&#xA;&#xA;Config (AppName+Delimiter+KEY)  are copying to Dictionary    AppConfig(KEY)&#xA;&#xA;Whole AppConfig adding to config :  Config(&quot;APP_&quot;+AppName)=AppConfig&#xA;&#xA;AppName - have to be supplied might be empty string&#xA;AppConfig might be supplied as in argument or it could exist ib Config&#xA;&#xA;priority for AppConfig sources  &#xA;&#xA;                   in argument as AppConfig ;&#xA;if not/empty   then  -&gt;  in Config(&quot;APP_&quot;+AppName);&#xA;if not/empty   then  -&gt; New Dictionary (string,Object)&#xA;&#xA;&#xA;Keys Started with AppName + Delimiter treated as keys for AppConfig but without common Prefix 'AppName+Delimiter'&#xA;&#xA;" DisplayName="ConfigAppData" sap:VirtualizedContainerService.HintSize="556,1435" sap2010:WorkflowViewState.IdRef="Sequence_11">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Prefix used to form name of config key to store application configuration in Config Dictionary." Default="APP_" Name="APP_prefix" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[Config isNot Nothing]" DisplayName="If Config Supplied " sap:VirtualizedContainerService.HintSize="534,963" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[Config isNot Nothing]" DisplayName="If Config Supplied " sap:VirtualizedContainerService.HintSize="534,954" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -78,10 +82,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Main Stream extract availabe values " sap:VirtualizedContainerService.HintSize="309,815" sap2010:WorkflowViewState.IdRef="Sequence_7">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="AppName_Delim" />
-          </Sequence.Variables>
+        <Sequence DisplayName="Main Stream extract availabe values " sap:VirtualizedContainerService.HintSize="309,806" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -96,7 +97,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <If sap2010:Annotation.AnnotationText="Check Type of Item &#xA;&#xA;and ConFig(AppName).GetType.FullName" Condition="[Config.ContainsKey(&quot;APP_&quot;+AppName)]" DisplayName="If AppConfig exists in Config " sap:VirtualizedContainerService.HintSize="603,520" sap2010:WorkflowViewState.IdRef="If_1">
+              <If sap2010:Annotation.AnnotationText="Check Type of Item and ConFig(AppName).GetType.FullName" Condition="[Config.ContainsKey(APP_prefix+AppName)]" DisplayName="If AppConfig exists in Config " sap:VirtualizedContainerService.HintSize="603,490" sap2010:WorkflowViewState.IdRef="If_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -105,25 +106,25 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="336,315" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                  <Sequence DisplayName="AppCongin is in Config already " sap:VirtualizedContainerService.HintSize="336,315" sap2010:WorkflowViewState.IdRef="Sequence_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;AppConfig Exported from Config&quot;]" />
-                    <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;AppConfig Imported from Config&quot;]" />
+                    <Assign DisplayName="Assign AppCOnfig" sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                       <Assign.To>
                         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[AppConfig]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" xml:space="preserve">[cType(Config("APP_"+AppName),  System.Collections.Generic.Dictionary(of System.String, System.Object))]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" xml:space="preserve">[cType(Config(APP_prefix+AppName),  System.Collections.Generic.Dictionary(of System.String, System.Object))]</InArgument>
                       </Assign.Value>
                     </Assign>
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign NewAppConfig" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[AppConfig]</OutArgument>
                     </Assign.To>
@@ -135,24 +136,71 @@
               </If>
             </If.Then>
             <If.Else>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;AppConfig had been Supplied&quot;]">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="336,175" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;AppConfig had been Supplied&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                  </Sequence>
+                </ui:CommentOut.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
+              </ui:CommentOut>
             </If.Else>
           </If>
-          <Assign DisplayName="Update Name adding Delimiter" sap:VirtualizedContainerService.HintSize="287,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[AppName_Delim]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[AppName+Delimiter]</InArgument>
-            </Assign.Value>
-          </Assign>
+          <If Condition="[Delimiter is nothing]" DisplayName="If delimiter " sap:VirtualizedContainerService.HintSize="287,51" sap2010:WorkflowViewState.IdRef="If_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Assign DisplayName="Assign Default Delimiter" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[Delimiter]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">.</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+            <If.Else>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[&quot;Delimiter:&lt;&quot;+Delimiter+&quot;&gt;&quot;]" />
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+            </If.Else>
+          </If>
           <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="For Each item In Config " sap:VirtualizedContainerService.HintSize="287,400" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Config]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
@@ -161,20 +209,20 @@
                 </ActivityAction.Argument>
                 <Sequence DisplayName="Loop Body" sap:VirtualizedContainerService.HintSize="222,266" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <Sequence.Variables>
-                    <Variable x:TypeArguments="x:Int32" Name="p" />
+                    <Variable x:TypeArguments="x:String" Name="NewKey" />
+                    <Variable x:TypeArguments="x:String" Default="[AppName+Delimiter]" Name="AppName_Delim" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CommentOut DisplayName="Private: Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                     <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <WriteLine DisplayName="Write Item Key" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Key: &quot;+item.Key]" />
@@ -195,75 +243,23 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="AddValue to AppConfig" sap:VirtualizedContainerService.HintSize="264,566" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence DisplayName="AddValue to AppConfig" sap:VirtualizedContainerService.HintSize="264,184" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="NewKey" />
+                          <Variable x:TypeArguments="x:Int32" Default="[Len(Item.Key)-Len(AppName_Delim)]" Name="LengthShortKey" />
                         </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Delimiter Position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Int32">[p]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Int32">[InStr(item.Key,Delimiter)]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                          <ui:CommentOut.Body>
-                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <WriteLine DisplayName="Write question answer " sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Does it Start with AppName? : &quot;+item.Key.StartsWith(AppName).ToString]" />
-                            </Sequence>
-                          </ui:CommentOut.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:CommentOut>
-                        <Assign DisplayName="Assign Short Key" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[NewKey]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Right(Item.Key,(Len(Item.Key)-p))]</InArgument>
-                          </Assign.Value>
-                        </Assign>
                         <Assign DisplayName="Add Value to AppConfig" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Object">[AppConfig(NewKey)]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Object">[AppConfig(Item.Key.Replace(AppName_Delim,""))]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:Object">[item.Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                          <ui:CommentOut.Body>
-                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <WriteLine DisplayName="Write Value" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Key Value : &quot;+item.Value.ToString]" />
-                            </Sequence>
-                          </ui:CommentOut.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:CommentOut>
                       </Sequence>
                     </If.Then>
                   </If>
@@ -273,7 +269,7 @@
           </ui:ForEach>
           <Assign DisplayName="Add AppConfig robot config" sap:VirtualizedContainerService.HintSize="287,60" sap2010:WorkflowViewState.IdRef="Assign_13">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:Object">[Config("APP_"+AppName)]</OutArgument>
+              <OutArgument x:TypeArguments="x:Object">[Config(APP_prefix+AppName)]</OutArgument>
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="x:Object">[AppConfig]</InArgument>
