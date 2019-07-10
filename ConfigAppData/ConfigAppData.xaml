@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>596,1554</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>596,1564</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -63,7 +63,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Proicedure forms AppConfig from values provided in config for name AppName.&#xA;&#xA;&#xA;Keys style is AppName+Delimiter+Key  &#xA;(&quot;ACME.URL&quot; )&#xA;&#xA;Config (AppName+Delimiter+KEY)  are copying to Dictionary    AppConfig(Key)&#xA;&#xA;Whole AppConfig adding to config&#xA;Config(&quot;APP_&quot;+AppName)=AppConfig&#xA;&#xA;AppName - have to be supplied might be empty string&#xA;AppConfig might be supplied as in argument &#xA;&#xA;priority for AppConfig sources  &#xA;&#xA;                   in argument as AppConfig ;&#xA;if not   then  -&gt;  in Config(&quot;app_&quot;+AppName);&#xA;if not   then  -&gt; New Dictionary (string,Object)&#xA;&#xA;Config Keys are matching to pattern &#xA;Keys Started with AppName + Delimiter treated as keys for AppConfig but without common Prefix 'AppName+Delimiter'&#xA;&#xA;" DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="556,1474" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap2010:Annotation.AnnotationText="Procedure forms AppConfig from values provided in config for name AppName.&#xA;&#xA;&#xA;Keys style is AppName+Delimiter+Key  (example of key &quot;ACME.URL&quot; )&#xA;&#xA;Config (AppName+Delimiter+KEY)  are copying to Dictionary    AppConfig(KEY)&#xA;&#xA;Whole AppConfig adding to config :  Config(&quot;APP_&quot;+AppName)=AppConfig&#xA;&#xA;AppName - have to be supplied might be empty string&#xA;AppConfig might be supplied as in argument or it could exist ib Config&#xA;&#xA;priority for AppConfig sources  &#xA;&#xA;                   in argument as AppConfig ;&#xA;if not/empty   then  -&gt;  in Config(&quot;APP_&quot;+AppName);&#xA;if not/empty   then  -&gt; New Dictionary (string,Object)&#xA;&#xA;&#xA;Keys Started with AppName + Delimiter treated as keys for AppConfig but without common Prefix 'AppName+Delimiter'&#xA;&#xA;" DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="556,1444" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,12 +168,12 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:CommentOut DisplayName="Private: Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                     <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="232,185" sap2010:WorkflowViewState.IdRef="Sequence_2">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -284,10 +284,11 @@
       <If.Else>
         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
           <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="308,1033" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Sequence sap:VirtualizedContainerService.HintSize="286,909" sap2010:WorkflowViewState.IdRef="Sequence_9">
