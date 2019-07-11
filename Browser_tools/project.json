@@ -9,7 +9,7 @@
   },
   "schemaVersion": "3.2",
   "studioVersion": "19.6.0.0",
-  "projectVersion": "1.0.2",
+  "projectVersion": "1.0.3",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -23,7 +23,9 @@
   "libraryOptions": {
     "includeOriginalXaml": false,
     "privateWorkflows": [
-      "Test_library.xaml"
+      "Test_library.xaml",
+      "App_Close.xaml",
+      "App_Open.xaml"
     ]
   },
   "webServices": []
