@@ -3,7 +3,7 @@
   "description": "Attempt to modify std template to improve work with standard objects ",
   "main": "Main.xaml",
   "dependencies": {
-    "ConfigAppData": "[1.0.9]",
+    "ConfigAppData": "[1.0.11]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.6.2]",
     "UiPath.Mail.Activities": "[1.5.0]",
