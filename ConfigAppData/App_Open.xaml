@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>480,1679</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>480,1715</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Browser_Open_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -64,7 +64,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Browser Open  process. We want to create a reusable component which can be used with many different Browsers.&#xA;&#xA;Precondition : Loaded Config from Exel used To Pick up values for dedicated variable names &#xA;&#xA;Arguments:&#xA;Config  ==Dictinary with name and objects &#xA; &#xA;data picked in   Supplied in Config&#xA; &#xA;%AppName_URL  - Initial url need to be opened by browser &#xA;%AppName_Credential  - Name of Asset variable in Orchestrator Can be empty or invalid. then GetAppCredential requested them Interactively &#xA;( Need to be check behaviour in case of unattended robot.&#xA;missed value meand no authenticaqtion requred at all    &#xA;&#xA;&#xA;Post action : Open default browser&#xA;== AppConfig == Is a dictianary formed in this procedure &#xA;&#xA;Config(&quot;App_YourAppName&quot;) = AppConfig as Object&#xA;&#xA;sample:&#xA;cType(Config(&quot;App_system1&quot;),  System.Collections.Generic.Dictionary(of System.String, System.Object))&#xA;&#xA;&#xA;AppConfig(&quot;WebUrl&quot;) as string(url)&#xA;&#xA;== userLogin ==&#xA;AppConfig(&quot;UserLogin&quot;) as string&#xA;AppConfig(&quot;UserLogin&quot;).ToString&#xA;&#xA;&#xA;== password ==&#xA;AppConfig(&quot;UserPassword&quot;) as secure.string&#xA;cType(AppConfig(&quot;UserPassword&quot;) ,  System.Security.SecureString)&#xA;&#xA;== Process == &#xA;== AppConfig(&quot;Process&quot;) == Process&#xA;Ctype(AppConfig(&quot;Process&quot;),UiPath.Core.Browser)&#xA;" DisplayName="Browser_Open" sap:VirtualizedContainerService.HintSize="440,1599" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="Browser Open  process. We want to create a reusable component which can be used with many different Browsers.&#xA;&#xA;Precondition : Loaded Config from Exel used To Pick up values for dedicated variable names &#xA;&#xA;Arguments:&#xA;Config  ==Dictinary with name and objects &#xA; &#xA;data picked in   Supplied in Config&#xA; &#xA;%AppName_URL  - Initial url need to be opened by browser &#xA;%AppName_Credential  - Name of Asset variable in Orchestrator Can be empty or invalid. then GetAppCredential requested them Interactively &#xA;( Need to be check behaviour in case of unattended robot.&#xA;missed value meand no authenticaqtion requred at all    &#xA;&#xA;&#xA;Post action : Open default browser&#xA;== AppConfig == Is a dictianary formed in this procedure &#xA;&#xA;Config(&quot;App_YourAppName&quot;) = AppConfig as Object&#xA;&#xA;sample:&#xA;cType(Config(&quot;App_system1&quot;),  System.Collections.Generic.Dictionary(of System.String, System.Object))&#xA;&#xA;&#xA;AppConfig(&quot;WebUrl&quot;) as string(url)&#xA;&#xA;== userLogin ==&#xA;AppConfig(&quot;UserLogin&quot;) as string&#xA;AppConfig(&quot;UserLogin&quot;).ToString&#xA;&#xA;&#xA;== password ==&#xA;AppConfig(&quot;UserPassword&quot;) as secure.string&#xA;cType(AppConfig(&quot;UserPassword&quot;) ,  System.Security.SecureString)&#xA;&#xA;== Process == &#xA;== AppConfig(&quot;Process&quot;) == Process&#xA;Ctype(AppConfig(&quot;Process&quot;),UiPath.Core.Browser)&#xA;" DisplayName="App_Browser_Open" sap:VirtualizedContainerService.HintSize="440,1131" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:GenericValue" Name="Message" />
     </Sequence.Variables>
@@ -74,20 +74,21 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="418,818" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="418,350" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="&#xA;&#xA; &#xA;" DisplayName="Browser_Open_try" sap:VirtualizedContainerService.HintSize="264,591" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence sap2010:Annotation.AnnotationText="&#xA;&#xA; &#xA;" DisplayName="Browser_Open_try" sap:VirtualizedContainerService.HintSize="336,627" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="AppURL" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <c:ConfigAppData Delimiter="{x:Null}" AppConfig="[AppConfig]" AppName="[AppName]" Config="[Config]" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="ConfigAppData_1" />
-          <If Condition="[AppConfig.ContainsKey(&quot;URL&quot;)]" DisplayName="If URL Supplied " sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_1">
+          <c:ConfigAppData Delimiter="{x:Null}" AppConfig="[AppConfig]" AppName="[AppName]" Config="[Config]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="ConfigAppData_1" />
+          <If Condition="[AppConfig.ContainsKey(&quot;URL&quot;)]" DisplayName="If URL Supplied " sap:VirtualizedContainerService.HintSize="314,51" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -105,33 +106,13 @@
               </Assign>
             </If.Then>
           </If>
-          <ui:OpenBrowser BrowserType="IE" DisplayName="Open IE Browser with URL Supplied" Hidden="False" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[Process]" Url="[AppURL]">
-            <ui:OpenBrowser.Body>
-              <ActivityAction x:TypeArguments="x:Object">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                </ActivityAction.Argument>
-                <ui:WaitUiElementAppear FoundElement="{x:Null}" DisplayName="Find Element 'html'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1" WaitActive="True" WaitVisible="False">
-                  <ui:WaitUiElementAppear.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html /&gt;" WaitForReady="COMPLETE" />
-                  </ui:WaitUiElementAppear.Target>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:WaitUiElementAppear>
-              </ActivityAction>
-            </ui:OpenBrowser.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:OpenBrowser>
-          <Assign DisplayName="Assign property Process" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke OpenIEBrowserwithURLSupplied workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Browser_Open.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="AppURL">[AppURL]</InArgument>
+              <OutArgument x:TypeArguments="ui:Browser" x:Key="Process">[Process]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign property Process" sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Object">[AppConfig("Process")]</OutArgument>
             </Assign.To>
@@ -139,7 +120,7 @@
               <InArgument x:TypeArguments="x:Object">[Process]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="314,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
@@ -148,7 +129,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[AppConfig.ContainsKey(&quot;Credential&quot;)]" DisplayName="If Orchestrator asset for credential provided " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_2">
+                <If Condition="[AppConfig.ContainsKey(&quot;Credential&quot;)]" DisplayName="If Orchestrator asset for credential provided " sap:VirtualizedContainerService.HintSize="464,790" sap2010:WorkflowViewState.IdRef="If_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -156,7 +137,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Pick Real Credentials from Orchestrator or Windows " sap:VirtualizedContainerService.HintSize="336,640" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence DisplayName="Pick Real Credentials from Orchestrator or Windows " sap:VirtualizedContainerService.HintSize="336,642" sap2010:WorkflowViewState.IdRef="Sequence_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -193,7 +174,7 @@
                           <InArgument x:TypeArguments="x:Object">[UserPassword]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Browser_DoLogin workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Browser_DoLogin.xaml">
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Browser_DoLogin workflow" sap:VirtualizedContainerService.HintSize="314,89" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Browser_DoLogin.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="AppConfig">[AppConfig]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
@@ -224,7 +205,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Exception Sequence" sap:VirtualizedContainerService.HintSize="336,51" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Exception Sequence" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
