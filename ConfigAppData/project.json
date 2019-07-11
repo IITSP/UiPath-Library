@@ -1,14 +1,15 @@
 {
   "name": "ConfigAppData",
   "description": "Generate dictionary for particular  aation from Config dictionary",
-  "main": "ConfigAppData.xaml",
+  "main": "Test_library.xaml",
   "dependencies": {
+    "Browser_tools": "1.0.4",
     "UiPath.System.Activities": "19.6.0",
     "UiPath.UIAutomation.Activities": "19.6.0"
   },
   "schemaVersion": "3.2",
   "studioVersion": "19.6.0.0",
-  "projectVersion": "1.0.8",
+  "projectVersion": "1.0.9",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -22,7 +23,8 @@
   "libraryOptions": {
     "includeOriginalXaml": false,
     "privateWorkflows": [
-      "Test_library.xaml"
+      "Test_library.xaml",
+      "App_DoLogin.xaml"
     ]
   },
   "webServices": []
