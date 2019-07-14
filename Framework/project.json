@@ -1,0 +1,33 @@
+{
+  "name": "Framework_tools",
+  "description": "Set of tools expanding Framework",
+  "main": "Test_library.xaml",
+  "dependencies": {
+    "UiPath.Credentials.Activities": "1.1.6479.13204",
+    "UiPath.Excel.Activities": "2.6.2",
+    "UiPath.System.Activities": "19.6.0",
+    "UiPath.UIAutomation.Activities": "19.6.0"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "19.6.0.0",
+  "projectVersion": "1.0.23",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Library",
+  "expressionLanguage": "VisualBasic",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": [
+      "Test_library.xaml",
+      "Browser/Test_library.xaml",
+      "Browser/InvokeActivity.xaml"
+    ]
+  },
+  "webServices": []
+}
