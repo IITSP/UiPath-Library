@@ -4,30 +4,37 @@
   "main": "Test_library.xaml",
   "dependencies": {
     "UiPath.Credentials.Activities": "1.1.6479.13204",
-    "UiPath.Excel.Activities": "2.6.2",
-    "UiPath.System.Activities": "19.6.0",
-    "UiPath.UIAutomation.Activities": "19.6.0"
+    "UiPath.Excel.Activities": "2.8.5",
+    "UiPath.System.Activities": "20.4.0",
+    "UiPath.UIAutomation.Activities": "20.4.1"
   },
-  "schemaVersion": "3.2",
-  "studioVersion": "19.6.0.0",
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.4.1.0",
   "projectVersion": "1.0.23",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
     "excludedLoggedData": [
       "Private:*",
       "*password*"
-    ]
+    ],
+    "executionType": "Workflow"
   },
-  "projectType": "Library",
-  "expressionLanguage": "VisualBasic",
-  "libraryOptions": {
-    "includeOriginalXaml": false,
-    "privateWorkflows": [
-      "Test_library.xaml",
-      "Browser/Test_library.xaml",
-      "Browser/InvokeActivity.xaml"
-    ]
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Library",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": [
+        "Test_library.xaml",
+        "Browser/Test_library.xaml",
+        "Browser/InvokeActivity.xaml"
+      ]
+    },
+    "fileInfoCollection": []
   },
-  "webServices": []
+  "expressionLanguage": "VisualBasic"
 }

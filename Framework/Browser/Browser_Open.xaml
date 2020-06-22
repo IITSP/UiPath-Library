@@ -1,7 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" this:Sequence.URL="https://www.google.com" this:Sequence.BrowserType="[BrowserName.IE]" this:Sequence.InBackground="False" this:Sequence.NewSession="True" this:Sequence.TimeToWait="35" this:Sequence.Selector="&lt;webctrl tag='BODY' /&gt;" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" this:Sequence.URL="https://www.google.com" this:Sequence.BrowserType="[BrowserType.IE]" this:Sequence.InBackground="False" this:Sequence.NewSession="True" this:Sequence.TimeToWait="35" this:Sequence.Selector="&lt;webctrl tag='BODY' /&gt;" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="URL" Type="InArgument(x:String)" />
-    <x:Property Name="BrowserType" Type="InArgument(ui:BrowserName)" />
+    <x:Property sap2010:Annotation.AnnotationText="Type 'ui:BrowserName' ('http://schemas.uipath.com/workflow/activities') could not be resolved and was automatically replaced with 'UnknownType'" Name="BrowserType" Type="InArgument(ui:BrowserType)" />
     <x:Property Name="InBackground" Type="InArgument(x:Boolean)" />
     <x:Property Name="NewSession" Type="InArgument(x:Boolean)" />
     <x:Property Name="Process" Type="OutArgument(ui:Browser)" />
@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>480,829</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>711,986</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -60,16 +60,17 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Browser_Open &#xA;allow control  parameters  for standard Open Browser Activity &#xA;Parameter  (Default value ) &#xA;URL - url to open  ( &quot;https://www.google.com&quot; )&#xA;BrowserType - Enumemerable  UiPath.Core.BrowserName ( UiPath.Core.BrowserName.IE)&#xA;InBackground  - Open Browser in background  ( Boolean False )&#xA;NewSession     -Open New session ( Boolean True) &#xA;Timeout  - Time out in Seconds wait for complete operation ( int 30 ) &#xA;&#xA;Return &#xA;Process  - type Browser  with opened Browser reference for use &#xA;" DisplayName="Browser_open" sap:VirtualizedContainerService.HintSize="440,749" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="Browser_Open &#xA;allow control  parameters  for standard Open Browser Activity &#xA;Parameter  (Default value ) &#xA;URL - url to open  ( &quot;https://www.google.com&quot; )&#xA;BrowserType - Enumemerable  UiPath.Core.BrowserName ( UiPath.Core.BrowserName.IE)&#xA;InBackground  - Open Browser in background  ( Boolean False )&#xA;NewSession     -Open New session ( Boolean True) &#xA;Timeout  - Time out in Seconds wait for complete operation ( int 30 ) &#xA;&#xA;Return &#xA;Process  - type Browser  with opened Browser reference for use &#xA;" DisplayName="Browser_open" sap:VirtualizedContainerService.HintSize="480,821" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch any errors" sap:VirtualizedContainerService.HintSize="418,287" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch any errors" sap:VirtualizedContainerService.HintSize="438,391" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Default="&lt;BODY /&gt;" Name="Selector" />
       </TryCatch.Variables>
@@ -80,14 +81,26 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim activity As New UiPath.Core.Activities.OpenBrowser&#xD;&#xA;Dim inArg As  Dictionary(Of String, Object) = New Dictionary(Of String, Object)&#xD;&#xA;Dim OuArg As  iDictionary(Of String, Object) &#xD;&#xA;Dim timesp As System.Timespan &#xD;&#xA;timesp=New System.Timespan(TimeToWait*System.TimeSpan.TicksPerSecond)&#xD;&#xA;&#xD;&#xA;Try&#xD;&#xA;&#x9;inArg.Add(&quot;Url&quot;,AppUrl)&#xD;&#xA;&#x9;activity.BrowserType = BrowserType&#xD;&#xA;&#x9;activity.Hidden      = OpeninBackground&#xD;&#xA;&#x9;activity.NewSession  = NewSession&#xD;&#xA;&#x9;activity.DisplayName = &quot;Open Browser &quot; + BrowserType.ToString&#xD;&#xA;&#x9;OuArg=WorkflowInvoker.Invoke(activity,inArg,timesp )&#xD;&#xA;'&#x9;OuArg=WorkflowInvoker.Invoke(activity,inArg)&#xD;&#xA;&#x9;Process=CType(OuArg(&quot;UiBrowser&quot;),UiPath.Core.Browser)&#xD;&#xA;Catch ex As Exception&#xD;&#xA;&#x9;'Console.WriteLine(ex.Message)&#xD;&#xA;&#x9;'Console.WriteLine(ex.InnerException.Message)&#xD;&#xA;&#x9;Throw New ApplicationException(&quot; Browser_open :&quot;+ex.InnerException.Message)&#xD;&#xA;Finally&#xD;&#xA;&#x9;'Console.WriteLine(activity.DisplayName+&quot; completed&quot;)&#xD;&#xA;End Try" DisplayName="Invoke Open Browser Activity" sap:VirtualizedContainerService.HintSize="314,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim activity As New UiPath.Core.Activities.OpenBrowser&#xD;&#xA;Dim inArg As  Dictionary(Of String, Object) = New Dictionary(Of String, Object)&#xD;&#xA;Dim OuArg As  iDictionary(Of String, Object) &#xD;&#xA;Dim timesp As System.Timespan &#xD;&#xA;timesp=New System.Timespan(TimeToWait*System.TimeSpan.TicksPerSecond)&#xD;&#xA;&#xD;&#xA;Try&#xD;&#xA;&#x9;inArg.Add(&quot;Url&quot;,AppUrl)&#xD;&#xA;&#x9;activity.BrowserType = BrowserType&#xD;&#xA;&#x9;activity.Hidden      = OpeninBackground&#xD;&#xA;&#x9;activity.NewSession  = NewSession&#xD;&#xA;&#x9;activity.DisplayName = &quot;Open Browser &quot; + BrowserType.ToString&#xD;&#xA;&#x9;OuArg=WorkflowInvoker.Invoke(activity,inArg,timesp )&#xD;&#xA;'&#x9;OuArg=WorkflowInvoker.Invoke(activity,inArg)&#xD;&#xA;&#x9;Process=CType(OuArg(&quot;UiBrowser&quot;),UiPath.Core.Browser)&#xD;&#xA;Catch ex As Exception&#xD;&#xA;&#x9;'Console.WriteLine(ex.Message)&#xD;&#xA;&#x9;'Console.WriteLine(ex.InnerException.Message)&#xD;&#xA;&#x9;Throw New ApplicationException(&quot; Browser_open :&quot;+ex.InnerException.Message)&#xD;&#xA;Finally&#xD;&#xA;&#x9;'Console.WriteLine(activity.DisplayName+&quot; completed&quot;)&#xD;&#xA;End Try" DisplayName="Invoke Open Browser Activity" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
           <ui:InvokeCode.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="AppUrl">[URL]</InArgument>
-            <InArgument x:TypeArguments="ui:BrowserName" x:Key="BrowserType">[BrowserType]</InArgument>
-            <InArgument x:TypeArguments="x:Boolean" x:Key="OpeninBackground">[InBackground]</InArgument>
-            <OutArgument x:TypeArguments="ui:Browser" x:Key="Process">[Process]</OutArgument>
-            <InArgument x:TypeArguments="x:Boolean" x:Key="NewSession">[NewSession]</InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="TimeToWait">[TimeToWait]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="AppUrl">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="URL" />
+            </InArgument>
+            <InArgument x:TypeArguments="ui:BrowserType" x:Key="BrowserType">
+              <mva:VisualBasicValue x:TypeArguments="ui:BrowserType" ExpressionText="BrowserType" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:Boolean" x:Key="OpeninBackground">
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="InBackground" />
+            </InArgument>
+            <OutArgument x:TypeArguments="ui:Browser" x:Key="Process">
+              <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="Process" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:Boolean" x:Key="NewSession">
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="NewSession" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="TimeToWait">
+              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="TimeToWait" />
+            </InArgument>
           </ui:InvokeCode.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -109,7 +122,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke App_Exception workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="App_Exception.xaml">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke App_Exception workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="App_Exception.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="Message">["Unable open Browser &lt;"+BrowserType.ToString+"&gt; &lt; "+URL+"&gt; "+exception.InnerException.Message]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
@@ -118,6 +131,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Browser  &lt;&quot;+BrowserType.ToString+&quot;&gt; Opened&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Browser  &lt;&quot;+BrowserType.ToString+&quot;&gt; Opened&quot;]" />
   </Sequence>
 </Activity>
